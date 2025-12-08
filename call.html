@@ -9,13 +9,49 @@
         .call { max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.8; color:#ccc; }
         .call h2, .call h3 { color:#0f0; text-shadow:0 0 15px #0f0; margin-top:3rem; }
         .call .warning { color:#f00; font-size:2.2rem; text-align:center; margin:4rem 0; text-shadow:0 0 15px #f00; }
-        .call code, .call pre { background:#000; padding:1rem; border:1px solid #0f0; overflow-x:auto; margin:1.5rem 0; font-size:0.95rem; }
+        
+        /* FIXED: Proper green code boxes */
+        .call pre {
+            background:#000 !important;
+            padding:1.5rem;
+            border:2px solid #0f0;
+            border-radius:0;
+            overflow-x:auto;
+            margin:2rem 0;
+            font-family: 'Courier New', monospace;
+            box-shadow:0 0 20px rgba(0,255,0,0.3);
+        }
+        .call pre code {
+            color:#0f0;
+            font-size:0.95rem;
+            line-height:1.5;
+            background:transparent !important;
+        }
+
         .call a { color:#0f0; text-decoration:underline; }
         .call a:hover { text-shadow:0 0 15px #0f0; }
-        .call .flyer { background:#000; color:#0f0; padding:2rem; margin:2rem 0; border:3px double #0f0; text-align:center; page-break-inside:avoid; }
-        .call .flyer h3 { margin:0; font-size:2rem; }
-        .call .qr { width:200px; height:200px; margin:1rem auto; }
-        @media print { body { background:#000; color:#0f0; } .call { max-width:none; } }
+
+        /* Fixed flyers */
+        .flyer {
+            background:#000;
+            color:#0f0;
+            padding:2rem;
+            margin:3rem 0;
+            border:3px double #0f0;
+            text-align:center;
+            page-break-inside:avoid;
+            box-shadow:0 0 25px rgba(0,255,0,0.4);
+        }
+        .flyer h3 { margin:0 0 1rem 0; font-size:2rem; text-shadow:0 0 15px #0f0; }
+        .flyer p { margin:0.8rem 0; }
+        .flyer strong { color:#fff; }
+        .qr img { width:200px; height:200px; margin:1rem auto; display:block; border:2px solid #0f0; padding:5px; background:#000; }
+
+        @media print {
+            body { background:#000; color:#0f0; }
+            .call { max-width:none; padding:0.5rem; }
+            .flyer { page-break-after:always; margin:0; padding:1rem; }
+        }
     </style>
 </head>
 <body>
@@ -43,7 +79,7 @@ git push -u origin main</code></pre>
 
         <h2>2. Ready-to-File FOIA Templates (Copy-Paste → Send)</h2>
 
-        <h3>Template A – HHS Unaccompanied Children Sponsors in Your County</h3>
+        <h3>Template A – HHS Sponsors in Your County</h3>
         <pre><code>To: foia@hhs.gov
 Subject: FOIA Request – UAC Sponsor Addresses [YOUR COUNTY, STATE] FY2021-2025
 
@@ -61,27 +97,27 @@ Subject: FOIA Request – Shelter and Services Program Grants FY2023-2025
 
 All contracts, payment records, and per-migrant reimbursement rates issued under FEMA’s Shelter and Services Program (SSP) and any predecessor programs to NGOs including Catholic Charities, Endeavors, Lutheran Immigration, HIAS, Southwest Key.</code></pre>
 
-        <h2>3. Printable One-Page Flyers (Ctrl+P → 4 per sheet)</h2>
+        <h2>3. Printable Flyers (Ctrl+P → 4 per sheet)</h2>
 
         <div class="flyer">
             <h3>470,000 CHILDREN</h3>
             <p>HHS lost contact with 85,000+ minors.<br>The rest were delivered to unvetted addresses.</p>
             <p><strong>This is not incompetence.<br>This is deployment.</strong></p>
-            <div class="qr"><img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://subtlestatic010.github.io/OccupiedState" alt="QR"></div>
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://subtlestatic010.github.io/OccupiedState" alt="QR Code">
         </div>
 
         <div class="flyer">
             <h3>$6,800 PER HEAD</h3>
             <p>NGOs received $4.7 billion to transport migrants.<br>Catholic Charities made more from taxpayers than from church plates.</p>
             <p><strong>Your taxes fund replacement.</strong></p>
-            <div class="qr"><img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://subtlestatic010.github.io/OccupiedState" alt="QR"></div>
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://subtlestatic010.github.io/OccupiedState" alt="QR Code">
         </div>
 
         <div class="flyer">
             <h3>2 MILLION GOT-AWAYS</h3>
             <p>Undetected crossings since 2021.<br>Cameras “reboot” when caravans walk through.</p>
             <p><strong>The wall blinks on command.</strong></p>
-            <div class="qr"><img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://subtlestatic010.github.io/OccupiedState/vault.html" alt="QR"></div>
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://subtlestatic010.github.io/OccupiedState/vault.html" alt="QR Code">
         </div>
 
         <h2>4. Leak Dead-Drop — Zero Trace</h2>
