@@ -6,52 +6,36 @@
     <title>CALL TO ACTION | Occupied State</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        .call { max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.8; color:#ccc; }
+        .call { max-width: 900px; margin: 0 auto; padding: 2rem; line-height: 1.8; }
+        .call p, .call li, .call pre code { color:#fff !important; }
         .call h2, .call h3 { color:#0f0; text-shadow:0 0 15px #0f0; margin-top:3rem; }
         .call .warning { color:#f00; font-size:2.2rem; text-align:center; margin:4rem 0; text-shadow:0 0 15px #f00; }
-        
-        /* FIXED: Proper green code boxes */
+
         .call pre {
-            background:#000 !important;
+            background:#000;
             padding:1.5rem;
             border:2px solid #0f0;
-            border-radius:0;
             overflow-x:auto;
             margin:2rem 0;
-            font-family: 'Courier New', monospace;
             box-shadow:0 0 20px rgba(0,255,0,0.3);
+            font-family:'Courier New',monospace;
         }
-        .call pre code {
-            color:#0f0;
-            font-size:0.95rem;
-            line-height:1.5;
-            background:transparent !important;
-        }
+        .call pre code { color:#0f0; font-size:0.95rem; line-height:1.5; background:transparent !important; }
 
         .call a { color:#0f0; text-decoration:underline; }
         .call a:hover { text-shadow:0 0 15px #0f0; }
 
-        /* Fixed flyers */
         .flyer {
-            background:#000;
-            color:#0f0;
-            padding:2rem;
-            margin:3rem 0;
-            border:3px double #0f0;
-            text-align:center;
-            page-break-inside:avoid;
+            background:#000; color:#0f0; padding:2rem; margin:3rem 0;
+            border:3px double #0f0; text-align:center; page-break-inside:avoid;
             box-shadow:0 0 25px rgba(0,255,0,0.4);
         }
         .flyer h3 { margin:0 0 1rem 0; font-size:2rem; text-shadow:0 0 15px #0f0; }
-        .flyer p { margin:0.8rem 0; }
+        .flyer p { margin:0.8rem 0; color:#fff; }
         .flyer strong { color:#fff; }
         .qr img { width:200px; height:200px; margin:1rem auto; display:block; border:2px solid #0f0; padding:5px; background:#000; }
 
-        @media print {
-            body { background:#000; color:#0f0; }
-            .call { max-width:none; padding:0.5rem; }
-            .flyer { page-break-after:always; margin:0; padding:1rem; }
-        }
+        @media print { body { background:#000; color:#0f0; } .call { max-width:none; } .flyer { page-break-after:always; } }
     </style>
 </head>
 <body>
@@ -75,59 +59,97 @@
 cd OccupiedState
 git remote set-url origin https://github.com/YOURNAME/OccupiedState-mirror.git
 git push -u origin main</code></pre>
-        <p>Or just click “Fork” on GitHub. 3 seconds.</p>
 
-        <h2>2. Ready-to-File FOIA Templates (Copy-Paste → Send)</h2>
+        <h2>2. Ready-to-File FOIA Templates</h2>
 
-        <h3>Template A – HHS Sponsors in Your County</h3>
+        <h3>A – HHS Sponsors in Your County</h3>
         <pre><code>To: foia@hhs.gov
-Subject: FOIA Request – UAC Sponsor Addresses [YOUR COUNTY, STATE] FY2021-2025
+Subject: FOIA – UAC Sponsor Addresses [COUNTY, STATE] FY2021-2025
+All sponsor addresses (street-level or census block) in [COUNTY], [STATE] receiving unaccompanied alien children FY2021-present. Include number of children per address and vetting status. Fee waiver requested.</code></pre>
 
-Pursuant to FOIA, I request all records containing street-level addresses (or census block if redacted) of sponsors who received unaccompanied alien children in [YOUR COUNTY], [STATE] from FY2021-present. Include number of children per address and vetting status. Fee waiver requested in the public interest.</code></pre>
-
-        <h3>Template B – CBP Camera Override / 11-Minute Blackouts</h3>
+        <h3>B – CBP Camera Override / 11-Minute Blackouts</h3>
         <pre><code>To: cbpfoia@cbp.dhs.gov
-Subject: FOIA Request – Camera Reboot / Override Logs Southwest Border FY2021-2025
+Subject: FOIA – Camera Reboot / Override Logs FY2021-2025
+All logs referencing “camera reboot,” “11-minute blackout,” “override code,” or “sensor deactivation” coinciding with migrant crossing events, southwest border.</code></pre>
 
-All logs, emails, and incident reports referencing “camera reboot,” “11-minute blackout,” “override code,” “sensor deactivation,” or “scheduled maintenance” coinciding with known migrant crossing events at the southwest border, FY2021-present.</code></pre>
-
-        <h3>Template C – NGO Bounty Payments</h3>
+        <h3>C – NGO Bounty Payments (FEMA/ICE)</h3>
         <pre><code>To: foia@ice.dhs.gov, ssp@fema.dhs.gov
-Subject: FOIA Request – Shelter and Services Program Grants FY2023-2025
+Subject: FOIA – Shelter & Services Program Grants FY2023-2025
+All contracts and per-migrant reimbursement rates to Catholic Charities, Endeavors, Lutheran Immigration, HIAS, Southwest Key, etc.</code></pre>
 
-All contracts, payment records, and per-migrant reimbursement rates issued under FEMA’s Shelter and Services Program (SSP) and any predecessor programs to NGOs including Catholic Charities, Endeavors, Lutheran Immigration, HIAS, Southwest Key.</code></pre>
+        <h3>D – Northern Border Got-Aways & License Plate Surveillance</h3>
+        <pre><code>To: cbpfoia@cbp.dhs.gov
+Subject: FOIA – Northern Border Got-Aways & Flock Safety Contracts FY2021-2025
+All got-away estimates and Flock Safety / ALPR contracts on the northern border.</code></pre>
+
+        <h3>E – FEMA Emergency Food & Shelter Program Migrant Funding</h3>
+        <pre><code>To: fema-foia@fema.dhs.gov
+Subject: FOIA – EFSP National Board Migrant Allocations FY2021-2025
+All grants issued through the EFSP National Board for migrant shelter/transport.</code></pre>
 
         <h2>3. Printable Flyers (Ctrl+P → 4 per sheet)</h2>
 
-        <div class="flyer">
-            <h3>470,000 CHILDREN</h3>
-            <p>HHS lost contact with 85,000+ minors.<br>The rest were delivered to unvetted addresses.</p>
-            <p><strong>This is not incompetence.<br>This is deployment.</strong></p>
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://subtlestatic010.github.io/OccupiedState" alt="QR Code">
-        </div>
+        <div class="flyer"><h3>470,000 CHILDREN</h3><p>HHS lost contact with 85,000+ minors.<br>The rest delivered to unvetted addresses.</p><p><strong>This is not incompetence.<br>This is deployment.</strong></p><img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://subtlestatic010.github.io/OccupiedState" alt="QR"></div>
 
-        <div class="flyer">
-            <h3>$6,800 PER HEAD</h3>
-            <p>NGOs received $4.7 billion to transport migrants.<br>Catholic Charities made more from taxpayers than from church plates.</p>
-            <p><strong>Your taxes fund replacement.</strong></p>
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://subtlestatic010.github.io/OccupiedState" alt="QR Code">
-        </div>
+        <div class="flyer"><h3>$6,800 PER HEAD</h3><p>NGOs received $4.7 billion of your taxes.<br>Catholic Charities made more from Uncle Sam than from church plates.</p><p><strong>Your money funds replacement.</strong></p><img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://subtlestatic010.github.io/OccupiedState" alt="QR"></div>
 
-        <div class="flyer">
-            <h3>2 MILLION GOT-AWAYS</h3>
-            <p>Undetected crossings since 2021.<br>Cameras “reboot” when caravans walk through.</p>
-            <p><strong>The wall blinks on command.</strong></p>
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://subtlestatic010.github.io/OccupiedState/vault.html" alt="QR Code">
-        </div>
+        <div class="flyer"><h3>2 MILLION GOT-AWAYS</h3><p>Undetected crossings since 2021.<br>Cameras “reboot” when caravans walk through.</p><p><strong>The wall blinks on command.</strong></p><img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://subtlestatic010.github.io/OccupiedState/vault.html" alt="QR"></div>
+
+        <div class="flyer"><h3>THEY LOST 85,000 KIDS</h3><p>HHS admits it cannot locate 85,000 minors released since 2021.<br>Many placed with criminal sponsors.</p><p><strong>Where are the children?</strong></p><img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://subtlestatic010.github.io/OccupiedState/analysis.html" alt="QR"></div>
+
+        <div class="flyer"><h3>YOUR TAXES PAY THE SMUGGLERS</h3><p>FEMA gave NGOs billions to fly, bus, and house migrants.<br>Zero border security required.</p><p><strong>Replacement is profitable.</strong></p><img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://subtlestatic010.github.io/OccupiedState" alt="QR"></div>
 
         <h2>4. Leak Dead-Drop — Zero Trace</h2>
-        <pre><code>Tor Browser → subtlestatic@tutamail.com (PGP welcome)
+        <pre><code>Tor Browser → subtlestatic@tutamail.com
 
-or open an anonymous issue:
+PGP Public Key (fingerprint: F41D 9BB8 4F67 FAC0 1AEA  A94C 13D1 7784 9E08 8E21)
+
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+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
+=gc2P
+-----END PGP PUBLIC KEY BLOCK-----
+
+or open anonymous GitHub issue:
 https://github.com/subtlestatic010/OccupiedState/issues/new?template=leak.yml</code></pre>
 
         <p class="warning">
-            THEY FEAR THE ARCHIVE MORE THAN THE RIFLE.<br>
+            WE ARE NOT VIOLENT. THEY FEAR THE ARCHIVE MORE THAN THE RIFLE.<br>
             BULLETS RUN OUT.<br>
             TRUTH REPLICATES FOREVER.
         </p>
