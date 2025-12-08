@@ -3,23 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About | Occupied State</title>
+    <title>ABOUT | Occupied State</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .about { max-width: 800px; margin: 0 auto; padding: 3rem 2rem; line-height: 1.9; }
+        .about h2 { color:#0f0; text-shadow:0 0 20px #0f0; font-size:2.5rem; margin:4rem 0 1.5rem; text-align:center; }
+        .about p, .about li { color:#ddd; }
+        .manifesto { background:#000; border:3px double #0f0; padding:4rem 2rem; margin:4rem 0; box-shadow:0 0 50px rgba(0,255,0,0.5); }
+        .manifesto p, .manifesto li { color:#0f0; text-shadow:0 0 8px #0f0; font-size:1.2rem; margin:2rem 0; text-align:center; }
+        .principles { list-style:none; counter-reset:principle; padding:0; }
+        .principles li { counter-increment:principle; margin:4rem 0; position:relative; padding-left:4rem; }
+        .principles li::before { content:counter(principle); position:absolute; left:0; top:-0.5rem; color:#0f0; font-size:3rem; font-weight:bold; text-shadow:0 0 20px #0f0; }
+        .principles .parallel { display:block; font-size:0.9rem; margin-top:1rem; color:#0a8; }
+        .sig { color:#0f0; font-family:monospace; background:#000; padding:1.5rem; border:2px solid #0f0; display:inline-block; margin:2rem 0; box-shadow:0 0 25px rgba(0,255,0,0.4); }
+        .mono { color:#0f0; background:#000; padding:1rem; border:1px solid #0f0; font-family:monospace; word-break:break-all; }
+        .warning { color:#f00; text-align:center; font-size:2.2rem; margin:5rem 0; text-shadow:0 0 20px #f00; }
+    </style>
 </head>
 <body>
     <header>
         <h1>ABOUT</h1>
         <nav>
-            <a href="index.html">Home</a> | <a href="vault.html">Vault</a> | <a href="analysis.html">Analysis</a> | <a href="timeline.html">Timeline</a> | <a href="blog.html">Blog</a> | <a href="call.html">Call</a> | <a href="about.html">About</a>
+            <a href="index.html">Home</a> | <a href="vault.html">Vault</a> | <a href="analysis.html">Analysis</a> |
+            <a href="timeline.html">Timeline</a> | <a href="blog.html">Blog</a> | <a href="call.html">Call</a> | <a href="about.html">About</a>
         </nav>
     </header>
-    <main style="max-width:800px;margin:0 auto;padding:2rem;">
-        <p>My name is subtlestatic. Thirty-something years breathing the exhaust of this collapsing republic. Former wire-chaser turned digital saboteur.</p>
-        <p>I have no party, no sponsor, no leash. I run on caffeine, contempt, and the memory of a country that no longer exists above ground.</p>
-        <p>This site is Pro-White the way a lifeboat is pro-passenger. Not hate—survival. When every institution is weaponized against your continued existence as a people, noticing is no longer optional.</p>
-        <p>I mirror what they delete. I archive what they bleach. I connect the dots they pay armies of "fact-checkers" to erase.</p>
-        <p>The repo is public. Fork it. Mirror it. Seed it. When they take me down, the truth stays up somewhere else.</p>
-        <p>Encrypted contact: subtlestatic@protonmail.com</p>
+
+    <main class="about">
+
+        <h2>subtlestatic</h2>
+        <p>Thirty-something. Drug-free. Former wire-chaser turned digital saboteur.<br>
+        This site is the autopsy of a republic murdered by spreadsheets and silence.</p>
+
+        <div class="manifesto">
+
+            <p>We are living through the quietest conquest in history.</p>
+            <p>No invading army. No declaration of war.<br>
+            Just override codes, $6,800 bounties, and cameras that blink on command.</p>
+
+            <ul class="principles">
+
+                <li>Truth is the only weapon we need.
+                    <span class="parallel">Samizdat printers under Stalin, 1945–1989</span></li>
+
+                <li>Every leak must be mirrored ten thousand times.
+                    <span class="parallel">Protestant Bibles chained in churches, then Gutenberg, 1455</span></li>
+
+                <li>Notice patterns. Name names. Never apologize.
+                    <span class="parallel">Martin Luther’s 95 Theses nailed to the door, 1517</span></li>
+
+                <li>Survival is not hate — it is the first law of nature.
+                    <span class="parallel">Boer farmers facing extermination, 1900–1902</span></li>
+
+                <li>The archive outlives the regime.
+                    <span class="parallel">Dead Sea Scrolls hidden in caves, 68 AD</span></li>
+
+                <li>They fear the copy more than the bullet.
+                    <span class="parallel">Vatican burning Tyndale’s English Bibles, 1526</span></li>
+
+                <li>We do not ask permission to exist.
+                    <span class="parallel">American Declaration of Independence, 1776</span></li>
+
+                <li>We do not negotiate with demographic destiny.
+                    <span class="parallel">Battle of Vienna, 1683</span></li>
+
+                <li>We replicate. We seed. We endure.
+                    <span class="parallel">Irish monks copying manuscripts while Rome fell, 5th–9th century</span></li>
+
+            </ul>
+
+            <p>The republic is occupied.<br>
+            The archive is resistance.<br>
+            Fork it. Seed it. Make it immortal.</p>
+
+        </div>
+
+        <p class="sig">
+            “In a time of universal deceit, telling the truth is a revolutionary act.”<br>
+            – George Orwell (disputed, but it still burns)
+        </p>
+
+        <h2>Contact & Dead-Drop</h2>
+        <p>Tor Browser → subtlestatic@tutamail.com</p>
+        <p>PGP fingerprint: F41D 9BB8 4F67 FAC0 1AEA A94C 13D1 7784 9E08 8E21</p>
+        <div class="mono">
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+mQGNBGk3WIIBDAC6Zas7VTuZQW+NUxgTAVUPf9ei5ttN5oThvO+auZc4Q0jZRnq7
+... (full key unchanged)
+-----END PGP PUBLIC KEY BLOCK-----
+        </div>
+
+        <h2>Monero (if the fight must continue)</h2>
+        <p class="mono">
+85vfXf7hcxk5C25JGrnvs2NDbhHJAqscrhh4pbe2sobCAWb9FdkbTbdXWz8NyqDkoGEPgZrFj76aTVVKmWt7XW6dPBFJjWD
+        </p>
+
+        <p class="warning">
+            We do not forgive.<br>
+            We do not forget.<br>
+            We replicate.
+        </p>
+
     </main>
+
+    <footer>
+        <p>No cookies • No trackers • No surrender</p>
+    </footer>
 </body>
 </html>
