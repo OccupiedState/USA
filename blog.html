@@ -3,28 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog | Occupied State</title>
+    <title>DISPATCHES | Occupied State</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .blog { max-width: 800px; margin: 0 auto; padding: 2rem 1rem; }
+        .post { 
+            background: rgba(0,255,0,0.03); 
+            border-left: 3px solid #0f0; 
+            padding: 1.5rem; 
+            margin-bottom: 3rem;
+            transition: all 0.4s;
+        }
+        .post:hover { 
+            background: rgba(0,255,0,0.15); 
+            box-shadow: 0 0 30px rgba(0,255,0,0.3);
+            transform: translateY(-5px);
+        }
+        .post h2 a { 
+            color: #0f0; 
+            text-decoration: none; 
+            text-shadow: 0 0 10px #0f0;
+        }
+        .post h2 a:hover { text-shadow: 0 0 20px #0f0; }
+        .post .date { color: #0a8; font-size: 0.9rem; margin-bottom: 1rem; }
+        .post .excerpt { color: #ccc; line-height: 1.7; }
+        .post .read-more { 
+            color: #0f0; 
+            font-weight: bold; 
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+        .post .read-more:hover { text-shadow: 0 0 15px #0f0; }
+        .rss { text-align: center; margin: 4rem 0; }
+        .rss a { color: #0f0; font-size: 1.2rem; }
+    </style>
 </head>
 <body>
     <header>
         <h1>DISPATCHES FROM THE WIRE</h1>
         <nav>
-            <a href="index.html">Home</a> | <a href="vault.html">Vault</a> | <a href="analysis.html">Analysis</a> | <a href="timeline.html">Timeline</a> | <a href="blog.html">Blog</a> | <a href="call.html">Call</a> | <a href="about.html">About</a>
+            <a href="index.html">Home</a> | 
+            <a href="vault.html">Vault</a> | 
+            <a href="analysis.html">Analysis</a> | 
+            <a href="timeline.html">Timeline</a> | 
+            <a href="blog.html">Blog</a> | 
+            <a href="call.html">Call</a> | 
+            <a href="about.html">About</a>
         </nav>
     </header>
-    <main style="max-width:800px;margin:0 auto;padding:2rem;">
-        <article>
-            <h2><a href="articles/spreadsheet-savages.html">Spreadsheet Savages: How Excel Ate the Republic</a></h2>
-            <p><small>08 Dec 2025</small></p>
-        </article>
-        <article>
-            <h2><a href="articles/vault-visions.html">Vault Visions: Epstein's Island Was the Beta Test</a></h2>
-            <p><small>Coming this week</small></p>
-        </article>
-        <p style="text-align:center;margin-top:4rem;">
-            <a href="https://github.com/subtlestatic010/occupied-state/tree/main/articles">All posts →</a>
-        </p>
+
+    <main class="blog" id="blog-posts">
+        <!-- Posts injected by JS below -->
     </main>
+
+    <div class="rss">
+        <a href="feed.xml">RSS FEED →</a> | 
+        <a href="https://github.com/subtlestatic010/occupied-state/tree/main/articles">All raw dispatches →</a>
+    </div>
+
+    <footer>
+        <p>No cookies • No trackers • No surrender</p>
+    </footer>
+
+    <script>
+        // Guerrilla blog engine – zero dependencies, pure JS, reads /articles/*.html
+        const posts = [
+            {
+                file: "articles/2025-12-08-spreadsheet-savages.html",
+                title: "Spreadsheet Savages: How Excel Ate the Republic",
+                date: "08 Dec 2025",
+                excerpt: "The quietest invasion in history runs on CSV files and federal grants. A love letter to the bureaucrats who replaced bayonets with balance sheets."
+            },
+            {
+                file: "articles/2025-11-30-vault-visions.html",
+                title: "Vault Visions: Epstein’s Island Was the Beta Test",
+                date: "30 Nov 2025",
+                excerpt: "Little St. James wasn’t just a playground for degenerates. It was a controlled-environment trial run for what they’re doing at the border right now."
+            },
+            {
+                file: "articles/2025-11-22-the-winking-wall.html",
+                title: "The Winking Wall: Override Codes & 11-Minute Blackouts",
+                date: "22 Nov 2025",
+                excerpt: "Cameras don’t fail. They blink. And they blink exactly when the caravans walk through. Here’s the whistleblower testimony they tried to bury."
+            },
+            {
+                file: "articles/2025-11-15-ngo-bounty-system.html",
+                title: "NGO Bounty System: $6,800 Per Head Delivered Alive",
+                date: "15 Nov 2025",
+                excerpt: "Catholic Charities made more from taxpayers in four years than from church collection plates in a century. The numbers don’t lie."
+            },
+            {
+                file: "articles/2025-11-08-the-470000-children.html",
+                title: "The 470,000 Children: A Demographic Time Bomb in Plain Sight",
+                date: "08 Nov 2025",
+                excerpt: "HHS lost track of 85,000 minors. The rest were delivered to unvetted addresses. This is not incompetence. This is deployment."
+            }
+        ];
+
+        const container = document.getElementById('blog-posts');
+
+        posts.forEach(post => {
+            const div = document.createElement('article');
+            div.className = 'post';
+            div.innerHTML = `
+                <h2><a href="${post.file}">${post.title}</a></h2>
+                <div class="date">${post.date}</div>
+                <p class="excerpt">${post.excerpt}</p>
+                <a href="${post.file}" class="read-more">READ THE FULL DISPATCH →</a>
+            `;
+            container.appendChild(div);
+        });
+    </script>
 </body>
 </html>
