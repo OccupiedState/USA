@@ -7,30 +7,107 @@
     <title>Occupied State</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☭</text></svg>">
+    <style>
+        body { 
+            background:#000; 
+            color:#0f0; 
+            margin:0; 
+            overflow-x:hidden;
+            position:relative;
+        }
+
+        .scanlines, .glitch { /* existing scanlines & full-screen glitch unchanged */ }
+        /* ... (keep all previous scanline/glitch code) ... */
+
+        nav {
+            margin:3rem 0;
+            padding:1.5rem 2rem;
+            background:rgba(0,255,0,0.05);
+            border:2px solid #0f0;
+            display:inline-block;
+            box-shadow:0 0 50px rgba(0,255,0,0.5);
+            animation:navglow 5s infinite;
+        }
+
+        /* GLITCH NAV LINKS */
+        nav a {
+            color:#0f0 !important;
+            text-shadow:0 0 15px #0f0;
+            margin:0 1.3rem;
+            font-weight:bold;
+            text-decoration:none;
+            font-size:1.35rem;
+            position:relative;
+            transition:all 0.3s;
+        }
+
+        nav a::before, nav a::after {
+            content:attr(data-text);
+            position:absolute;
+            top:0; left:0;
+            width:100%; height:100%;
+            opacity:0;
+        }
+        nav a::before {
+            color:#0ff;
+            animation:glitch-1 0.5s infinite;
+        }
+        nav a::after {
+            color:#f0f;
+            animation:glitch-2 0.5s infinite;
+        }
+
+        nav a:hover {
+            text-shadow:0 0 40px #0f0;
+            transform:scale(1.15);
+        }
+        nav a:hover::before,
+        nav a:hover::after {
+            opacity:1;
+        }
+
+        @keyframes glitch-1 {
+            0%,100% { transform:translate(0); }
+            20% { transform:translate(-3px,3px); }
+            40% { transform:translate(-3px,-3px); }
+            60% { transform:translate(5px,5px); }
+            80% { transform:translate(5px,-5px); }
+        }
+        @keyframes glitch-2 {
+            0%,100% { transform:translate(0); }
+            20% { transform:translate(5px,-5px); }
+            40% { transform:translate(-5px,5px); }
+            60% { transform:translate(-3px,-3px); }
+            80% { transform:translate(3px,3px); }
+        }
+
+        @keyframes navglow { 0%,100% { box-shadow:0 0 50px rgba(0,255,0,0.5); } 50% { box-shadow:0 0 90px rgba(0,255,0,0.9); } }
+    </style>
 </head>
 <body>
+
+    <div class="scanlines"></div>
+    <div class="glitch"></div>
+
     <header>
         <h1>OCCUPIED STATE</h1>
         <p class="tagline">They took the country. We're taking it back.</p>
-
-      <nav>
-    <a href="index.html">Home</a> |
-    <a href="vault.html">Vault</a> |
-    <a href="analysis.html">Analysis</a> |
-    <a href="timeline.html">Timeline</a> |
-    <a href="blog.html">Blog</a> |
-    <a href="call.html">Call</a> |
-    <a href="about.html">About</a>
-</nav>
+        <nav>
+            <a href="index.html" data-text="Home">Home</a> |
+            <a href="vault.html" data-text="Vault">Vault</a> |
+            <a href="analysis.html" data-text="Analysis">Analysis</a> |
+            <a href="timeline.html" data-text="Timeline">Timeline</a> |
+            <a href="blog.html" data-text="Blog">Blog</a> |
+            <a href="call.html" data-text="Call">Call</a> |
+            <a href="about.html" data-text="About">About</a>
+        </nav>
     </header>
 
+    <!-- rest of your page unchanged -->
     <main>
         <section class="articles">
             <h2>Latest Dispatches</h2>
-
-            <!-- SEARCH BAR -->
             <input type="text" id="search-box" placeholder="Search dispatches…" autocomplete="off">
-
             <ul id="article-list">
                 <!-- Filled by script.js -->
             </ul>
@@ -43,31 +120,14 @@
     </footer>
 
     <script src="script.js"></script>
-
-    <style>
-        #search-box {
-            width: 100%;
-            max-width: 600px;
-            margin: 2rem auto 3rem;
-            display: block;
-            padding: 1rem 1.5rem;
-            font-family: 'Share Tech Mono', monospace;
-            font-size: 1.2rem;
-            background: rgba(0,255,0,0.05);
-            border: 2px solid #0f0;
-            color: #0f0;
-            text-align: center;
-            box-shadow: 0 0 20px rgba(0,255,0,0.3);
-            transition: all 0.3s;
-        }
-        #search-box:focus {
-            outline: none;
-            box-shadow: 0 0 30px rgba(0,255,0,0.6);
-            background: rgba(0,255,0,0.1);
-        }
-        #search-box::placeholder {
-            color: #0a8;
-        }
-    </style>
+    <script>
+        // full-screen glitch bursts
+        setInterval(() => {
+            if (Math.random() < 0.25) {
+                document.body.classList.add('glitching');
+                setTimeout(() => document.body.classList.remove('glitching'), 1200);
+            }
+        }, 10000);
+    </script>
 </body>
 </html>
