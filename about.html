@@ -9,15 +9,73 @@
         .about { max-width: 800px; margin: 0 auto; padding: 3rem 2rem; line-height: 1.9; }
         .about h2 { color:#0f0; text-shadow:0 0 20px #0f0; font-size:2.5rem; margin:4rem 0 1.5rem; text-align:center; }
         .about p, .about li { color:#ddd; }
+
         .manifesto { background:#000; border:3px double #0f0; padding:4rem 2rem; margin:4rem 0; box-shadow:0 0 50px rgba(0,255,0,0.5); }
         .manifesto p, .manifesto li { color:#0f0; text-shadow:0 0 8px #0f0; font-size:1.2rem; margin:2rem 0; text-align:center; }
         .principles { list-style:none; counter-reset:principle; padding:0; }
-        .principles li { counter-increment:principle; margin:4rem 0; position:relative; padding-left:4rem; }
-        .principles li::before { content:counter(principle); position:absolute; left:0; top:-0.5rem; color:#0f0; font-size:3rem; font-weight:bold; text-shadow:0 0 20px #0f0; }
-        .principles .parallel { display:block; font-size:0.9rem; margin-top:1rem; color:#0a8; }
-        .sig { color:#0f0; font-family:monospace; background:#000; padding:1.5rem; border:2px solid #0f0; display:inline-block; margin:2rem 0; box-shadow:0 0 25px rgba(0,255,0,0.4); }
+        .principles li { counter-increment:principle; margin:4.5rem 0; position:relative; padding-left:4rem; }
+        .principles li::before { content:counter(principle); position:absolute; left:0; top:-0.8rem; color:#0f0; font-size:3.5rem; font-weight:bold; text-shadow:0 0 25px #0f0; }
+        .principles .parallel { display:block; font-size:0.95rem; margin-top:1rem; color:#0a8; }
+        .principles .quote { display:block; margin-top:1.5rem; font-style:italic; color:#0f8; }
+        .principles .author { display:block; margin-top:0.5rem; font-size:0.9rem; color:#0a8; }
+
+        /* LEGACY SECTION – EVEN HEAVIER */
+        .legacy-box {
+            background:#000;
+            border:5px double #0f0;
+            padding:5rem 2rem;
+            margin:6rem auto;
+            text-align:center;
+            box-shadow:0 0 100px rgba(0,255,0,0.8);
+            position:relative;
+            overflow:hidden;
+        }
+        .legacy-box::before {
+            content:"";
+            position:absolute;
+            top:0; left:0; right:0; bottom:0;
+            background:repeating-linear-gradient(45deg, transparent, transparent 12px, rgba(0,255,0,0.04) 12px, rgba(0,255,0,0.04) 24px);
+            pointer-events:none;
+            animation:scan 10s linear infinite;
+        }
+        @keyframes scan { 0% { transform:translateY(-100%); } 100% { transform:translateY(100%); } }
+
+        .legacy-box h3 {
+            color:#0f0;
+            font-size:3.5rem;
+            text-shadow:0 0 40px #0f0;
+            margin:0 0 4rem 0;
+            letter-spacing:6px;
+        }
+        .legacy-quotes {
+            counter-reset:legacy;
+        }
+        .legacy-quotes p {
+            counter-increment:legacy;
+            position:relative;
+            color:#0f0;
+            font-size:1.5rem;
+            margin:4rem 0;
+            padding-left:5rem;
+            text-shadow:0 0 20px #0f0;
+        }
+        .legacy-quotes p::before {
+            content:counter(legacy);
+            position:absolute;
+            left:0;
+            font-size:5rem;
+            font-weight:bold;
+            opacity:0.3;
+        }
+        .legacy-quotes .author {
+            display:block;
+            margin-top:1.5rem;
+            font-size:1.1rem;
+            color:#0a8;
+        }
+
         .mono { color:#0f0; background:#000; padding:1rem; border:1px solid #0f0; font-family:monospace; word-break:break-all; }
-        .warning { color:#f00; text-align:center; font-size:2.2rem; margin:5rem 0; text-shadow:0 0 20px #f00; }
+        .warning { color:#f00; text-align:center; font-size:2.4rem; margin:6rem 0; text-shadow:0 0 25px #f00; }
     </style>
 </head>
 <body>
@@ -36,52 +94,82 @@
         This site is the autopsy of a republic murdered by spreadsheets and silence.</p>
 
         <div class="manifesto">
-
             <p>We are living through the quietest conquest in history.</p>
             <p>No invading army. No declaration of war.<br>
             Just override codes, $6,800 bounties, and cameras that blink on command.</p>
 
             <ul class="principles">
-
                 <li>Truth is the only weapon we need.
-                    <span class="parallel">Samizdat printers under Stalin, 1945–1989</span></li>
+                    <span class="parallel">Samizdat printers under Stalin, 1945–1989</span>
+                    <span class="quote">“One word of truth outweighs the whole world.”</span>
+                    <span class="author">— Aleksandr Solzhenitsyn</span></li>
 
                 <li>Every leak must be mirrored ten thousand times.
-                    <span class="parallel">Protestant Bibles chained in churches, then Gutenberg, 1455</span></li>
+                    <span class="parallel">Protestant Bibles chained in churches, then Gutenberg, 1455</span>
+                    <span class="quote">“The truth will make you free.”</span>
+                    <span class="author">— John Wycliffe</span></li>
 
                 <li>Notice patterns. Name names. Never apologize.
-                    <span class="parallel">Martin Luther’s 95 Theses nailed to the door, 1517</span></li>
+                    <span class="parallel">Martin Luther’s 95 Theses, 1517</span>
+                    <span class="quote">“Here I stand. I can do no other.”</span>
+                    <span class="author">— Martin Luther</span></li>
 
                 <li>Survival is not hate — it is the first law of nature.
-                    <span class="parallel">Boer farmers facing extermination, 1900–1902</span></li>
+                    <span class="parallel">Boer farmers facing extermination, 1900–1902</span>
+                    <span class="quote">“A nation that forgets its past has no future.”</span>
+                    <span class="author">— Sir Winston Churchill</span></li>
 
                 <li>The archive outlives the regime.
-                    <span class="parallel">Dead Sea Scrolls hidden in caves, 68 AD</span></li>
+                    <span class="parallel">Dead Sea Scrolls hidden in caves, 68 AD</span>
+                    <span class="quote">“What is written remains.”</span>
+                    <span class="author">— Tacitus</span></li>
 
                 <li>They fear the copy more than the bullet.
-                    <span class="parallel">Vatican burning Tyndale’s English Bibles, 1526</span></li>
+                    <span class="parallel">Vatican burning Tyndale’s English Bibles, 1526</span>
+                    <span class="quote">“The press is the only tocsin of a nation.”</span>
+                    <span class="author">— William Tyndale</span></li>
 
                 <li>We do not ask permission to exist.
-                    <span class="parallel">American Declaration of Independence, 1776</span></li>
+                    <span class="parallel">American Declaration of Independence, 1776</span>
+                    <span class="quote">“We hold these truths to be self-evident…”</span>
+                    <span class="author">— Thomas Jefferson</span></li>
 
                 <li>We do not negotiate with demographic destiny.
-                    <span class="parallel">Battle of Vienna, 1683</span></li>
+                    <span class="parallel">Battle of Vienna, 1683</span>
+                    <span class="quote">“I came, I saw, God conquered.”</span>
+                    <span class="author">— King Jan III Sobieski</span></li>
 
                 <li>We replicate. We seed. We endure.
-                    <span class="parallel">Irish monks copying manuscripts while Rome fell, 5th–9th century</span></li>
-
+                    <span class="parallel">Irish monks copying manuscripts while Rome fell</span>
+                    <span class="quote">“The blood of the martyrs is the seed of the Church.”</span>
+                    <span class="author">— Tertullian, 197 AD</span></li>
             </ul>
 
             <p>The republic is occupied.<br>
             The archive is resistance.<br>
             Fork it. Seed it. Make it immortal.</p>
-
         </div>
 
-        <p class="sig">
-            “In a time of universal deceit, telling the truth is a revolutionary act.”<br>
-            – George Orwell (disputed, but it still burns)
-        </p>
+        <!-- LEGACY SECTION – VOICES OF THE ANCESTORS -->
+        <div class="legacy-box">
+            <h3>THEY SPOKE. WE LISTEN.</h3>
+            <div class="legacy-quotes">
+                <p>“A nation can survive its fools, and even the ambitious. But it cannot survive treason from within.”</p>
+                <span class="author">— Marcus Tullius Cicero, 42 BC</span>
+
+                <p>“The life of the nation is secure only while the nation is honest, truthful, and virtuous.”</p>
+                <span class="author">— Frederick Douglass</span>
+
+                <p>"The greater the crime perpetrated by the leadership, the less likely it is that the people will ever believe their leaders to be capable of perpetrating such an event."</p>
+                <span class="author">— Adolf Hitler</span>
+
+                <p>“The most effective way to destroy a people is to deny and obliterate their own understanding of their history.”</p>
+                <span class="author">— George Orwell</span>
+
+                <p>“To be ignorant of what occurred before you were born is to remain always a child.”</p>
+                <span class="author">— Marcus Tullius Cicero</span>
+            </div>
+        </div>
 
         <h2>Contact & Dead-Drop</h2>
         <p>Tor Browser → subtlestatic@tutamail.com</p>
