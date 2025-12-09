@@ -94,7 +94,6 @@
         .analysis-section[data-shadow-intensity="1"] { box-shadow: 0 0 10px rgba(0,255,0,0.2); }
         .analysis-section[data-shadow-intensity="2"] { box-shadow: 0 0 20px rgba(0,255,0,0.4); }
         .analysis-section[data-shadow-intensity="3"] { box-shadow: 0 0 15px rgba(0,255,0,0.3); }
-
         @keyframes glitch {
             0% { text-shadow: 0.05em 0 0 #f00, -0.03em 0 0 #0f0, -0.04em 0 0 #00f; }
             15% { text-shadow: 0.05em -0.03em 0 #f00, 0.025em 0.035em 0 #0f0, -0.05em -0.02em 0 #00f; }
@@ -102,6 +101,24 @@
             50% { text-shadow: 0.05em 0.035em 0 #f00, 0.03em 0 0 #0f0, 0 0 0 #00f; }
             99% { text-shadow: 0.05em 0 0 #f00, -0.025em -0.04em 0 #0f0, -0.04em -0.025em 0 #00f; }
             100% { text-shadow: 0.025em 0 0 #f00, -0.025em -0.025em 0 #0f0, -0.04em 0 0 #00f; }
+        }
+        /* Mobile line fix: throttle padding, enforce wrap/break for overflow mercy */
+        @media (max-width: 480px) {
+            .analysis-section {
+                max-width: 100%;
+                padding: 2rem 1rem;
+            }
+            p, ul, pre {
+                word-break: break-word;
+                hyphens: auto;
+            }
+            pre {
+                white-space: pre-wrap;
+                overflow-wrap: break-word;
+            }
+            h2, h3 {
+                font-size: 1.5rem;
+            }
         }
     </style>
 </body>
