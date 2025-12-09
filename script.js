@@ -1,78 +1,53 @@
 const articles = [
-    {
-        title: "THE THIRD LEAK",
-        date: "09 DECEMBER 2025",
-        file: "articles/third-leak.html",
-        preview: "1,088,000 unaccompanied minors vanished from public records after being handed to private “sponsors” with no vetting. The real HHS spreadsheets, delivered straight from the contractor portal..."
-    },
-    {
-        title: "THE SECOND LEAK",
-        date: "08 DECEMBER 2025",
-        file: "articles/second-leak.html",
-        preview: "312,000 got-aways. 11,000 watchlist checkboxes quietly deleted. The raw CBP numbers before they scrubbed them..."
-    },
-    {
-        title: "THE FIRST LEAK",
-        date: "06 DECEMBER 2025",
-        file: "articles/the-first-leak.html",
-        preview: "The algorithm doesn’t just watch anymore. It owns the prison, the guards, and the electric fence..."
-    }
+  {
+    title: "THE THIRD LEAK",
+    date: "09 DECEMBER 2025",
+    file: "articles/third-leak.html",
+    preview: "1,088,000 unaccompanied minors vanished from public records. Handed to strangers with zero vetting. Delivered to abandoned strip malls and slaughterhouses. The full 41,000-file HHS contractor dump, with mirrors and torrents…"
+  },
+  {
+    title: "THE SECOND LEAK",
+    date: "15 DECEMBER 2025",
+    file: "articles/second-leak.html",
+    preview: "10.3 million encounters. 2.1 million known got-aways. 73,000 Special Interest Aliens. 40,000+ QR-coded military-age males. Nightly camera blackouts. Terrorist watchlist boxes quietly unchecked. The raw CBP spreadsheets before they scrubbed them forever…"
+  },
+  {
+    title: "THE FIRST LEAK",
+    date: "06 DECEMBER 2025",
+    file: "articles/first-leak.html",
+    preview: "From Facebook’s secret sadness experiments to TikTok’s Beijing backdoors — the complete timeline of how they turned your phone into a digital concentration camp. Every smoking-gun document, mirrored and seeded…"
+  }
 ];
 
 const list = document.getElementById('article-list');
 const searchInput = document.getElementById('search-box');
 
-const fullTexts = {};
-
-async function loadArticleText(file) {
-    if (fullTexts[file]) return fullTexts[file];
-    try {
-        const res = await fetch(file);
-        const html = await res.text();
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(html, 'text/html');
-        const text = (doc.querySelector('.full')?.textContent || '').toLowerCase();
-        fullTexts[file] = text;
-        return text;
-    } catch {
-        return '';
-    }
-}
-
 function render(results = articles) {
-    list.innerHTML = '';
-    if (results.length === 0) {
-        list.innerHTML = '<p style="text-align:center; color:#0a8;">No dispatches found.</p>';
-        return;
-    }
-    results.forEach(article => {
-        const li = document.createElement('li');
-        li.className = 'article';
-        li.innerHTML = `
-            <h3><a href="${article.file}">${article.title}</a></h3>
-            <div class="date">${article.date}</div>
-            <p class="preview">${article.preview}</p>
-            <a href="${article.file}">Read the dispatch →</a>
-        `;
-        list.appendChild(li);
-    });
+  list.innerHTML = '';
+  if (!results.length) {
+    list.innerHTML = '<p style="text-align:center;color:#0a8">No dispatches match your search.</p>';
+    return;
+  }
+  results.forEach(a => {
+    list.innerHTML += `
+      <li class="article">
+        <h3><a href="${a.file}">${a.title}</a></h3>
+        <div class="date">${a.date}</div>
+        <p class="preview">${a.preview}</p>
+        <a href="${a.file}">Read the dispatch →</a>
+      </li>`;
+  });
 }
 
-searchInput.addEventListener('input', async () => {
-    const query = searchInput.value.toLowerCase().trim();
-    if (!query) { render(articles); return; }
-
-    const matches = [];
-    for (const article of articles) {
-        if (article.title.toLowerCase().includes(query) || 
-            article.preview.toLowerCase().includes(query) ||
-            article.date.includes(query)) {
-            matches.push(article); continue;
-        }
-        const body = await loadArticleText(article.file);
-        if (body.includes(query)) matches.push(article);
-    }
-    render(matches);
+searchInput?.addEventListener('input', () => {
+  const q = searchInput.value.toLowerCase().trim();
+  if (!q) return render();
+  const matches = articles.filter(a =>
+    a.title.toLowerCase().includes(q) ||
+    a.preview.toLowerCase().includes(q) ||
+    a.date.includes(q)
+  );
+  render(matches);
 });
 
-render(articles);
+render();
