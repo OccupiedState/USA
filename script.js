@@ -7,7 +7,7 @@ const articles = [
   },
   {
     title: "THE SECOND LEAK",
-    date: "15 DECEMBER 2025",
+    date: "08 DECEMBER 2025",
     file: "articles/second-leak.html",
     preview: "10.3 million encounters. 2.1 million known got-aways. 73,000 Special Interest Aliens. 40,000+ QR-coded military-age males. Nightly camera blackouts. Terrorist watchlist boxes quietly unchecked. The raw CBP spreadsheets before they scrubbed them forever…"
   },
