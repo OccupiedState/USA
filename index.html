@@ -6,7 +6,16 @@
     <meta name="description" content="Occupied State – Dispatches from inside the digital concentration camp. No masters. No mercy.">
     <title>Occupied State</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='none' stroke='%230f0' stroke-width='12'/><circle cx='50' cy='50' r='18' fill='none' stroke='%230f0' stroke-width='12'/><line x1='50' y1='10' x2='50' y2='90' stroke='%230f0' stroke-width='12'/><line x1='10' y1='50' x2='90' y2='50' stroke='%230f0' stroke-width='12'/></svg>">
+
+    <!-- Fixed favicon for mobile (iOS/Android) + all browsers -->
+    <!-- Apple touch icon + standard sizes + maskable for PWA -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='none' stroke='%230f0' stroke-width='12'/%3E%3Ccircle cx='50' cy='50' r='18' fill='none' stroke='%230f0' stroke-width='12'/%3E%3Cline x1='50' y1='10' x2='50' y2='90' stroke='%230f0' stroke-width='12'/%3E%3Cline x1='10' y1='50' x2='90' y2='50' stroke='%230f0' stroke-width='12'/%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='none' stroke='%230f0' stroke-width='12'/%3E%3Ccircle cx='50' cy='50' r='18' fill='none' stroke='%230f0' stroke-width='12'/%3E%3Cline x1='50' y1='10' x2='50' y2='90' stroke='%230f0' stroke-width='12'/%3E%3Cline x1='10' y1='50' x2='90' y2='50' stroke='%230f0' stroke-width='12'/%3E%3C/svg%3E">
+    <link rel="icon" href="favicon-32.png" sizes="32x32">
+    <link rel="icon" href="favicon-16.png" sizes="16x16">
+    <!-- If you want pure SVG on every platform including iOS, force it with mask-icon (Safari) -->
+    <link rel="mask-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='none' stroke='%230f0' stroke-width='12'/%3E%3Ccircle cx='50' cy='50' r='18' fill='none' stroke='%230f0' stroke-width='12'/%3E%3Cline x1='50' y1='10' x2='50' y2='90' stroke='%230f0' stroke-width='12'/%3E%3Cline x1='10' y1='50' x2='90' y2='50' stroke='%230f0' stroke-width='12'/%3E%3C/svg%3E" color="#0f0">
+
     <style>
         body {
             background:#000;
@@ -14,19 +23,49 @@
             margin:0;
             overflow-x:hidden;
             position:relative;
+            font-family: 'Courier New', monospace;
         }
-        .scanlines, .glitch { /* existing scanlines & full-screen glitch unchanged */ }
-        /* ... (keep all previous scanline/glitch code) ... */
+
+        /* Scanlines & full-screen glitch – unchanged, left here for completeness */
+        .scanlines {
+            pointer-events: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(transparent 50%, rgba(0,255,0,0.03) 50%);
+            background-size: 100% 4px;
+            z-index: 999;
+            opacity: 0.4;
+        }
+        .glitch {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: transparent;
+            pointer-events: none;
+            z-index: 998;
+        }
+        body.glitching .glitch {
+            animation: glitch-burst 1.2s steps(5) forwards;
+        }
+        @keyframes glitch-burst {
+            0%   { background: transparent; }
+            10%  { background: rgba(0,255,0,0.15); transform: translate(2px, -2px); }
+            20%  { transform: translate(-4px, 4px); }
+            30%  { transform: translate(3px, -3px); }
+            100% { background: transparent; transform: translate(0); }
+        }
+
         nav {
             margin:3rem 0;
             padding:1.5rem 2rem;
             background:rgba(0,255,0,0.05);
+            background: rgba(0,0,0,0.8);
             border:2px solid #0f0;
             display:inline-block;
             box-shadow:0 0 50px rgba(0,255,0,0.5);
             animation:navglow 5s infinite;
         }
-        /* GLITCH NAV LINKS */
+
+        /* GLITCH NAV LINKS – unchanged */
         nav a {
             color:#0f0 !important;
             text-shadow:0 0 15px #0f0;
@@ -44,48 +83,39 @@
             width:100%; height:100%;
             opacity:0;
         }
-        nav a::before {
-            color:#0ff;
-            animation:glitch-1 0.5s infinite;
-        }
-        nav a::after {
-            color:#f0f;
-            animation:glitch-2 0.5s infinite;
-        }
-        nav a:hover {
-            text-shadow:0 0 40px #0f0;
-            transform:scale(1.15);
-        }
-        nav a:hover::before,
-        nav a:hover::after {
-            opacity:1;
-        }
-        @keyframes glitch-1 {
-            0%,100% { transform:translate(0); }
-            20% { transform:translate(-3px,3px); }
-            40% { transform:translate(-3px,-3px); }
-            60% { transform:translate(5px,5px); }
-            80% { transform:translate(5px,-5px); }
-        }
-        @keyframes glitch-2 {
-            0%,100% { transform:translate(0); }
-            20% { transform:translate(5px,-5px); }
-            40% { transform:translate(-5px,5px); }
-            60% { transform:translate(-3px,-3px); }
-            80% { transform:translate(3px,3px); }
-        }
+        nav a::before { color:#0ff; animation:glitch-1 0.5s infinite; }
+        nav a::after  { color:#f0f; animation:glitch-2 0.5s infinite; }
+        nav a:hover { text-shadow:0 0 40px #0f0; transform:scale(1.15); }
+        nav a:hover::before, nav a:hover::after { opacity:1; }
+
+        @keyframes glitch-1 { 0%,100%{transform:translate(0)} 20%{transform:translate(-3px,3px)} 40%{transform:translate(-3px,-3px)} 60%{transform:translate(5px,5px)} 80%{transform:translate(5px,-5px)} }
+        @keyframes glitch-2 { 0%,100%{transform:translate(0)} 20%{transform:translate(5px,-5px)} 40%{transform:translate(-5px,5px)} 60%{transform:translate(-3px,-3px)} 80%{transform:translate(3px,3px)} }
         @keyframes navglow { 0%,100% { box-shadow:0 0 50px rgba(0,255,0,0.5); } 50% { box-shadow:0 0 90px rgba(0,255,0,0.9); } }
-        /* Mobile title fix: throttle size harder, add break for overflow mercy */
+
+        /* Mobile fixes – tighter, no overflow, title never breaks the screen */
         @media (max-width: 480px) {
             h1 {
-                font-size: 2rem !important; /* Thinner clamp from 2.5rem—fits the trench */
+                font-size: clamp(1.8rem, 8vw, 2.2rem) !important;
                 word-break: break-word;
                 hyphens: auto;
                 text-align: center;
-                padding: 0 0.5rem; /* Tighter edges */
+                padding: 0 0.5rem;
+                line-height: 1.1;
             }
             .tagline {
-                font-size: 1.1rem; /* Slim subtitle further */
+                font-size: 1rem;
+                padding: 0 1rem;
+                line-height: 1.4;
+            }
+            nav {
+                padding: 1rem;
+                display: block;
+                text-align: center;
+            }
+            nav a {
+                display: inline-block;
+                margin: 0.5rem 0.8rem;
+                font-size: 1.15rem;
             }
         }
     </style>
@@ -93,6 +123,7 @@
 <body>
     <div class="scanlines"></div>
     <div class="glitch"></div>
+
     <header>
         <h1>OCCUPIED STATE</h1>
         <p class="tagline">Primary-source leaks exposing open-border replacement, digital censorship, and state-sponsored child trafficking.</p>
@@ -106,7 +137,7 @@
             <a href="about.html" data-text="About">About</a>
         </nav>
     </header>
-    <!-- rest of your page unchanged -->
+
     <main>
         <section class="articles">
             <h2>Latest Dispatches</h2>
@@ -116,13 +147,15 @@
             </ul>
         </section>
     </main>
+
     <footer>
         <p>No cookies • No trackers • No surrender</p>
         <p>Hosted on liberated infrastructure • 2025</p>
     </footer>
+
     <script src="script.js"></script>
     <script>
-        // full-screen glitch bursts
+        // Random full-screen glitch bursts
         setInterval(() => {
             if (Math.random() < 0.25) {
                 document.body.classList.add('glitching');
