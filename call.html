@@ -100,7 +100,7 @@ BSy5lmfiX5CgSLif/+B6UYQsmYkEmIA5eY9Zeux0NT/rj6Re/wxe7ObxaC8UIaC2
 LWMIzHsngCB4kox7ABEBAAGJAbwEGAEKACYWIQT0HZu4T2f6wBrqqUwT0XeEngiO
 IQUCaTdYggIbDAUJA8ISjgAKCRAT0XeEngiOIdpGC/4u1hR/Ki+oHMOM2mGrP/2X
 VKEtTiO6oFJBdyaiDxE27RQ5y2pLHILqKcBDVhK05gPAlj9d//UjWDJjxfocbzPU
-aIJqjwrnodqpTNiC/KDupU0R64VHucEhFv4Z19RVkRzy02TiNGjfPNSJdr+BFzP8
+aIJqjwrwrnodqpTNiC/KDupU0R64VHucEhFv4Z19RVkRzy02TiNGjfPNSJdr+BFzP8
 mFscVl0EKsrVO718DXocscChA1i4PEIcYN5YSZV/Ree6z/2DihFFluj95SNnGRZH
 FQpmqMZ4LaBKN51EYh3uo20WoqmKV8RidylUaTSoJCljFgDQhVL4oL8GxWb38ppk
 HI7wIxk+WRcJdL/YM2m8gU/eeepvuTsTzQRTNZAF16WQRBjvTYDL+y4pO4xHaWTB
@@ -159,13 +159,11 @@ https://github.com/subtlestatic010/OccupiedState/issues/new?template=leak.yml</c
         .call-section[data-shadow-intensity="1"] { box-shadow: 0 0 10px rgba(0,255,0,0.2); }
         .call-section[data-shadow-intensity="2"] { box-shadow: 0 0 20px rgba(0,255,0,0.4); }
         .call-section[data-shadow-intensity="3"] { box-shadow: 0 0 30px rgba(0,255,0,0.6); }
-
         @keyframes pulse {
             0% { box-shadow: 0 0 15px rgba(0,255,0,0.3); }
             50% { box-shadow: 0 0 25px rgba(0,255,0,0.5); }
             100% { box-shadow: 0 0 15px rgba(0,255,0,0.3); }
         }
-
         @keyframes glitch {
             0% { text-shadow: 0.05em 0 0 #f00, -0.03em 0 0 #0f0, -0.04em 0 0 #00f; }
             15% { text-shadow: 0.05em -0.03em 0 #f00, 0.025em 0.035em 0 #0f0, -0.05em -0.02em 0 #00f; }
@@ -173,6 +171,47 @@ https://github.com/subtlestatic010/OccupiedState/issues/new?template=leak.yml</c
             50% { text-shadow: 0.05em 0.035em 0 #f00, 0.03em 0 0 #0f0, 0 0 0 #00f; }
             99% { text-shadow: 0.05em 0 0 #f00, -0.025em -0.04em 0 #0f0, -0.04em -0.025em 0 #00f; }
             100% { text-shadow: 0.025em 0 0 #f00, -0.025em -0.025em 0 #0f0, -0.04em 0 0 #00f; }
+        }
+        /* Mobile optimization: clamp title, thin paddings, wrap text */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem !important;
+                word-break: break-word;
+                hyphens: auto;
+                text-align: center;
+                padding: 0 0.5rem;
+            }
+            .call {
+                padding: 1rem 0.5rem;
+            }
+            .call-section {
+                padding: 1.5rem 1rem;
+            }
+            pre {
+                font-size: 0.85rem;
+                padding: 1rem;
+            }
+            .warning {
+                font-size: 1.8rem;
+            }
+            .flyer {
+                padding: 1rem;
+                margin: 1.5rem 0;
+            }
+            .flyer h3 {
+                font-size: 1.5rem;
+            }
+            .qr img {
+                width: 150px;
+                height: 150px;
+            }
+            p, code {
+                word-break: break-word;
+                hyphens: auto;
+            }
+            a {
+                overflow-wrap: break-word;
+            }
         }
     </style>
 </body>
