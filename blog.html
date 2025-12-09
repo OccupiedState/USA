@@ -5,107 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DISPATCHES | Occupied State</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        .blog { max-width: 800px; margin: 0 auto; padding: 2rem 1rem; }
-        .post { 
-            background: rgba(0,255,0,0.03); 
-            border-left: 3px solid #0f0; 
-            padding: 1.5rem; 
-            margin-bottom: 3rem;
-            transition: all 0.4s;
-        }
-        .post:hover { 
-            background: rgba(0,255,0,0.15); 
-            box-shadow: 0 0 30px rgba(0,255,0,0.3);
-            transform: translateY(-5px);
-        }
-        .post h2 a { 
-            color: #0f0; 
-            text-decoration: none; 
-            text-shadow: 0 0 10px #0f0;
-        }
-        .post h2 a:hover { text-shadow: 0 0 20px #0f0; }
-        .post .date { color: #0a8; font-size: 0.9rem; margin-bottom: 1rem; }
-        .post .excerpt { color: #ccc; line-height: 1.7; }
-        .post .read-more { 
-            color: #0f0; 
-            font-weight: bold; 
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 1rem;
-        }
-        .post .read-more:hover { text-shadow: 0 0 15px #0f0; }
-        .rss { text-align: center; margin: 4rem 0; }
-        .rss a { color: #0f0; font-size: 1.2rem; }
-    </style>
 </head>
 <body>
     <header>
         <h1>DISPATCHES FROM THE WIRE</h1>
-        <nav>
-            <a href="index.html">Home</a> | 
-            <a href="vault.html">Vault</a> | 
-            <a href="analysis.html">Analysis</a> | 
-            <a href="timeline.html">Timeline</a> | 
-            <a href="blog.html">Blog</a> | 
-            <a href="call.html">Call</a> | 
-            <a href="about.html">About</a>
-        </nav>
+        <div class="topnav">
+            <span class="menu-icon" onclick="toggleMenu()">≡</span>
+            <div class="nav-links">
+                <a href="index.html">DISPATCHES</a>
+                <a href="vault.html">THE VAULT</a>
+                <a href="analysis.html">ANALYSIS</a>
+                <a href="timeline.html">TIMELINE</a>
+                <a href="blog.html">BLOG</a>
+                <a href="call.html">CALL TO ACTION</a>
+                <a href="about.html">ABOUT</a>
+            </div>
+        </div>
     </header>
-
     <main class="blog" id="blog-posts">
         <!-- Posts injected by JS below -->
     </main>
-
     <div class="rss">
-        <a href="feed.xml">RSS FEED →</a> | 
+        <a href="feed.xml">RSS FEED →</a> |
         <a href="https://github.com/subtlestatic010/occupied-state/tree/main/articles">All raw dispatches →</a>
     </div>
-
     <footer>
         <p>No cookies • No trackers • No surrender</p>
     </footer>
-
     <script>
+        function toggleMenu() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        }
+
         // Guerrilla blog engine – zero dependencies, pure JS, reads /articles/*.html
         const posts = [
             {
                 file: "articles/2025-12-08-spreadsheet-savages.html",
                 title: "Spreadsheet Savages: How Excel Ate the Republic",
                 date: "08 Dec 2025",
-                excerpt: "The quietest invasion in history runs on CSV files and federal grants. A love letter to the bureaucrats who replaced bayonets with balance sheets."
+                excerpt: "The quietest invasion in history runs on CSV files and federal grants. A love letter to the bureaucrats who replaced bayonets with balance sheets. Dive the HHS sponsor pipeline: 490k+ minors offloaded since 2021, 87% via NGO cutouts like Catholic Charities ($1.4B taxpayer haul), with 85k unanswered follow-ups vanishing into trafficking shadows—engineered replacement, one scrubbed record at a time."
             },
             {
                 file: "articles/2025-11-30-vault-visions.html",
                 title: "Vault Visions: Epstein’s Island Was the Beta Test",
                 date: "30 Nov 2025",
-                excerpt: "Little St. James wasn’t just a playground for degenerates. It was a controlled-environment trial run for what they’re doing at the border right now."
+                excerpt: "Little St. James wasn’t just a playground for degenerates. It was a controlled-environment trial run for what they’re doing at the border right now. Cross the unredacted flight logs with CBP got-aways: elite capture from Lolita Express to HHS sponsor scrubs, 40k records bleached while NGOs pocket billions—psyops refined for demographic conquest."
             },
             {
                 file: "articles/2025-11-22-the-winking-wall.html",
                 title: "The Winking Wall: Override Codes & 11-Minute Blackouts",
                 date: "22 Nov 2025",
-                excerpt: "Cameras don’t fail. They blink. And they blink exactly when the caravans walk through. Here’s the whistleblower testimony they tried to bury."
+                excerpt: "Cameras don’t fail. They blink. And they blink exactly when the caravans walk through. Here’s the whistleblower testimony they tried to bury. Yuma sector logs show systemic reboots syncing with 2M+ got-aways since 2021, Flock Safety's inland net tracking millions of plates—selective blindness for the horde, panopticon for the citizen."
             },
             {
                 file: "articles/2025-11-15-ngo-bounty-system.html",
                 title: "NGO Bounty System: $6,800 Per Head Delivered Alive",
                 date: "15 Nov 2025",
-                excerpt: "Catholic Charities made more from taxpayers in four years than from church collection plates in a century. The numbers don’t lie."
+                excerpt: "Catholic Charities made more from taxpayers in four years than from church collection plates in a century. The numbers don’t lie. Top 10 NGOs hoovered $4.7B+ since 2021, with Endeavors' $600M no-bid crony deals and HIAS greasing southern trails—head-tax on the republic, outsourcing invasion via Excel incentives."
             },
             {
                 file: "articles/2025-11-08-the-470000-children.html",
                 title: "The 470,000 Children: A Demographic Time Bomb in Plain Sight",
                 date: "08 Nov 2025",
-                excerpt: "HHS lost track of 85,000 minors. The rest were delivered to unvetted addresses. This is not incompetence. This is deployment."
+                excerpt: "HHS lost track of 85,000 minors. The rest were delivered to unvetted addresses. This is not incompetence. This is deployment. ORR audits reveal 79k home studies waived for kids under 12, 22k 'missing' in Trump-era digs—funneled to cartel-linked sponsors, seeding blue-city sprawl with future voters."
             }
         ];
-
         const container = document.getElementById('blog-posts');
-
-        posts.forEach(post => {
+        posts.forEach((post, index) => {
             const div = document.createElement('article');
             div.className = 'post';
+            div.dataset.shadowIntensity = (index % 3) + 1;
             div.innerHTML = `
                 <h2><a href="${post.file}">${post.title}</a></h2>
                 <div class="date">${post.date}</div>
@@ -115,5 +84,65 @@
             container.appendChild(div);
         });
     </script>
+    <style>
+        .blog { max-width: 800px; margin: 0 auto; padding: 2rem 1rem; display: flex; flex-direction: column; gap: 3rem; }
+        .post {
+            background: rgba(0,255,0,0.03);
+            border-left: 3px solid #0f0;
+            padding: 1.5rem;
+            transition: all 0.4s;
+            box-shadow: 0 0 15px rgba(0,255,0,0.3);
+            animation: pulse 2s infinite;
+        }
+        .post:hover {
+            background: rgba(0,255,0,0.15);
+            box-shadow: 0 0 40px rgba(0,255,0,0.8);
+            transform: translateY(-5px);
+            animation: none;
+        }
+        .post h2 a {
+            color: #0f0;
+            text-decoration: none;
+            text-shadow: 0 0 10px #0f0;
+        }
+        .post h2 a:hover { 
+            text-shadow: 0 0 20px #0f0; 
+            animation: glitch 0.3s linear;
+        }
+        .post .date { color: #0a8; font-size: 0.9rem; margin-bottom: 1rem; text-shadow: 0 0 5px #0f0; }
+        .post .excerpt { color: #ccc; line-height: 1.7; }
+        .post .read-more {
+            color: #0f0;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+        .post .read-more:hover { 
+            text-shadow: 0 0 15px #0f0; 
+            animation: glitch 0.3s linear;
+        }
+        .rss { text-align: center; margin: 4rem 0; }
+        .rss a { color: #0f0; font-size: 1.2rem; text-shadow: 0 0 10px #0f0; }
+        .rss a:hover { text-shadow: 0 0 20px #0f0; animation: glitch 0.3s linear; }
+        .post[data-shadow-intensity="1"] { box-shadow: 0 0 10px rgba(0,255,0,0.2); }
+        .post[data-shadow-intensity="2"] { box-shadow: 0 0 20px rgba(0,255,0,0.4); }
+        .post[data-shadow-intensity="3"] { box-shadow: 0 0 30px rgba(0,255,0,0.6); }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 15px rgba(0,255,0,0.3); }
+            50% { box-shadow: 0 0 25px rgba(0,255,0,0.5); }
+            100% { box-shadow: 0 0 15px rgba(0,255,0,0.3); }
+        }
+
+        @keyframes glitch {
+            0% { text-shadow: 0.05em 0 0 #f00, -0.03em 0 0 #0f0, -0.04em 0 0 #00f; }
+            15% { text-shadow: 0.05em -0.03em 0 #f00, 0.025em 0.035em 0 #0f0, -0.05em -0.02em 0 #00f; }
+            49% { text-shadow: -0.025em 0 0 #f00, 0.025em 0 0 #0f0, 0.04em -0.02em 0 #00f; }
+            50% { text-shadow: 0.05em 0.035em 0 #f00, 0.03em 0 0 #0f0, 0 0 0 #00f; }
+            99% { text-shadow: 0.05em 0 0 #f00, -0.025em -0.04em 0 #0f0, -0.04em -0.025em 0 #00f; }
+            100% { text-shadow: 0.025em 0 0 #f00, -0.025em -0.025em 0 #0f0, -0.04em 0 0 #00f; }
+        }
+    </style>
 </body>
 </html>
