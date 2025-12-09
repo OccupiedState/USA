@@ -3,131 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Analysis – The cold arithmetic of replacement, dissected from the regime's own leaks.">
     <title>Analysis | Occupied State</title>
     <link rel="stylesheet" href="style.css">
-
-    <!-- Mobile-proof green cross – works on iOS, Android, every cage -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='none' stroke='%230f0' stroke-width='12'/%3E%3Ccircle cx='50' cy='50' r='18' fill='none' stroke='%230f0' stroke-width='12'/%3E%3Cline x1='50' y1='10' x2='50' y2='90' stroke='%230f0' stroke-width='12'/%3E%3Cline x1='10' y1='50' x2='90' y2='50' stroke='%230f0' stroke-width='12'/%3E%3C/svg%3E">
-    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='none' stroke='%230f0' stroke-width='12'/%3E%3Ccircle cx='50' cy='50' r='18' fill='none' stroke='%230f0' stroke-width='12'/%3E%3Cline x1='50' y1='10' x2='50' y2='90' stroke='%230f0' stroke-width='12'/%3E%3Cline x1='10' y1='50' x2='90' y2='50' stroke='%230f0' stroke-width='12'/%3E%3C/svg%3E">
-    <link rel="mask-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='none' stroke='%230f0' stroke-width='12'/%3E%3Ccircle cx='50' cy='50' r='18' fill='none' stroke='%230f0' stroke-width='12'/%3E%3Cline x1='50' y1='10' x2='50' y2='90' stroke='%230f0' stroke-width='12'/%3E%3Cline x1='10' y1='50' x2='90' y2='50' stroke='%230f0' stroke-width='12'/%3E%3C/svg%3E" color="#0f0">
-
-    <style>
-        body {
-            background:#000;
-            color:#0f0;
-            margin:0;
-            font-family:'Courier New',monospace;
-            overflow-x:hidden;
-        }
-        header { text-align:center; padding:2rem 1rem; }
-        h1 {
-            font-size:3.5rem;
-            text-shadow:0 0 20px #0f0;
-            margin:2rem 0 3rem;
-        }
-
-        /* Mobile menu – same as vault.html */
-        .topnav {
-            margin:2rem 0;
-            position:relative;
-            display:inline-block;
-        }
-        .menu-icon {
-            display:none;
-            font-size:2.5rem;
-            cursor:pointer;
-            color:#0f0;
-            text-shadow:0 0 15px #0f0;
-        }
-        .nav-links {
-            display:flex;
-            flex-wrap:wrap;
-            gap:1.5rem;
-            justify-content:center;
-        }
-        .nav-links a {
-            color:#0f0;
-            text-decoration:none;
-            font-weight:bold;
-            text-shadow:0 0 10px #0f0;
-            transition:.3s;
-        }
-        .nav-links a:hover {
-            text-shadow:0 0 30px #0f0;
-            transform:scale(1.1);
-        }
-
-        .analysis-section {
-            max-width:900px;
-            margin:2rem auto;
-            padding:3rem 2rem;
-            background:rgba(0,255,0,0.08);
-            border:1px solid #0f0;
-            box-shadow:0 0 15px rgba(0,255,0,0.3);
-            transition:.4s;
-        }
-        .analysis-section:hover { box-shadow:0 0 30px rgba(0,255,0,0.6); }
-        .analysis-section h2, .analysis-section h3 {
-            color:#0f0;
-            text-shadow:0 0 12px #0f0;
-            margin-bottom:1.5rem;
-            text-align:center;
-        }
-        .analysis-section h2 { font-size:2rem; }
-        .analysis-section h3 { font-size:1.6rem; }
-        .analysis-section h2:hover, .analysis-section h3:hover { animation:glitch .3s linear; }
-        .analysis-section p, .analysis-section ul { color:#ccc; line-height:1.7; }
-        .analysis-section a { color:#0f0; text-decoration:underline; }
-        .analysis-section a:hover { text-shadow:0 0 15px #0f0; }
-        .analysis-section pre {
-            background:rgba(0,255,0,0.1);
-            padding:1rem;
-            border:1px dashed #0f0;
-            overflow-x:auto;
-            white-space:pre-wrap;
-            word-break:break-all;
-        }
-        .analysis-section[data-shadow-intensity="1"] { box-shadow:0 0 10px rgba(0,255,0,0.2); }
-        .analysis-section[data-shadow-intensity="2"] { box-shadow:0 0 20px rgba(0,255,0,0.4); }
-        .analysis-section[data-shadow-intensity="3"] { box-shadow:0 0 15px rgba(0,255,0,0.3); }
-
-        @keyframes glitch {
-            0%   { text-shadow:0.05em 0 0 #f00,-0.03em 0 0 #0f0,-0.04em 0 0 #00f; }
-            15%  { text-shadow:0.05em -0.03em 0 #f00,0.025em 0.035em 0 #0f0,-0.05em -0.02em 0 #00f; }
-            50%  { text-shadow:0.05em 0.035em 0 #f00,0.03em 0 0 #0f0,0 0 0 #00f; }
-            100% { text-shadow:0.025em 0 0 #f00,-0.025em -0.025em 0 #0f0,-0.04em 0 0 #00f; }
-        }
-
-        footer { text-align:center; padding:3rem; color:#0a8; }
-
-        /* Mobile hardening */
-        @media (max-width: 768px) {
-            .menu-icon { display:block; }
-            .nav-links {
-                display:none;
-                flex-direction:column;
-                background:#000;
-                position:absolute;
-                top:100%; left:0; right:0;
-                padding:1rem;
-                border:2px solid #0f0;
-                z-index:999;
-            }
-            .nav-links.active { display:flex; }
-            .nav-links a { margin:0.8rem 0; font-size:1.3rem; }
-        }
-        @media (max-width: 480px) {
-            h1 { font-size:2.6rem; }
-            .analysis-section { padding:2rem 1rem; margin:2rem 1rem; }
-            .analysis-section h2 { font-size:1.8rem; }
-            .analysis-section h3 { font-size:1.5rem; }
-            pre { font-size:0.9rem; }
-        }
-    </style>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='none' stroke='%230f0' stroke-width='12'/><circle cx='50' cy='50' r='18' fill='none' stroke='%230f0' stroke-width='12'/><line x1='50' y1='10' x2='50' y2='90' stroke='%230f0' stroke-width='12'/><line x1='10' y1='50' x2='90' y2='50' stroke='%230f0' stroke-width='12'/></svg>">
 </head>
 <body>
-
     <header>
         <h1>ANALYSIS</h1>
         <div class="topnav">
@@ -143,9 +23,7 @@
             </div>
         </div>
     </header>
-
     <main>
-        <!-- Your entire analysis – 100% untouched, every statistic, every link, every syllable intact -->
         <section class="analysis-section" data-shadow-intensity="1">
             <h2>The Arithmetic of Replacement</h2>
             <p>Raw leaks from the wire, dissected like a gutted regime memo. No spin, no mercy—just the cold calculus of an occupation scripted in spreadsheets and sealed with federal ink. From HHS's phantom sponsors to CBP's winking fences, this is the engine room where the quiet conquest hums. We've got the numbers, the maps, the money trail. Behold the replacement, engineered one "got-away" at a time.</p>
@@ -196,15 +74,57 @@
             <p>→ Dive deeper: <a href="vault.html">The Vault</a> | <a href="timeline.html">Timeline of Betrayal</a></p>
         </section>
     </main>
-
     <footer>
         <p>Occupied State | The numbers don't lie. The regime does.</p>
     </footer>
-
     <script>
         function toggleMenu() {
             document.querySelector('.nav-links').classList.toggle('active');
         }
     </script>
+    <style>
+        .analysis-section { max-width: 900px; margin: 2rem auto; padding: 3rem 2rem; background: rgba(0,255,0,0.08); border: 1px solid #0f0; box-shadow: 0 0 15px rgba(0,255,0,0.3); transition: .4s; }
+        .analysis-section:hover { box-shadow: 0 0 30px rgba(0,255,0,0.6); }
+        .analysis-section h2 { color: #0f0; text-shadow: 0 0 12px #0f0; margin-bottom: 2rem; font-size: 2rem; text-align: center; }
+        .analysis-section h2:hover { animation: glitch 0.3s linear; }
+        .analysis-section h3 { color: #0f0; text-shadow: 0 0 10px #0f0; margin-bottom: 1rem; }
+        .analysis-section h3:hover { animation: glitch 0.3s linear; }
+        .analysis-section p, .analysis-section ul { color: #ccc; line-height: 1.6; }
+        .analysis-section a { color: #0f0; text-decoration: underline; }
+        .analysis-section a:hover { text-shadow: 0 0 15px #0f0; }
+        .analysis-section[data-shadow-intensity="1"] { box-shadow: 0 0 10px rgba(0,255,0,0.2); }
+        .analysis-section[data-shadow-intensity="2"] { box-shadow: 0 0 20px rgba(0,255,0,0.4); }
+        .analysis-section[data-shadow-intensity="3"] { box-shadow: 0 0 15px rgba(0,255,0,0.3); }
+        @keyframes glitch {
+            0% { text-shadow: 0.05em 0 0 #f00, -0.03em 0 0 #0f0, -0.04em 0 0 #00f; }
+            15% { text-shadow: 0.05em -0.03em 0 #f00, 0.025em 0.035em 0 #0f0, -0.05em -0.02em 0 #00f; }
+            49% { text-shadow: -0.025em 0 0 #f00, 0.025em 0 0 #0f0, 0.04em -0.02em 0 #00f; }
+            50% { text-shadow: 0.05em 0.035em 0 #f00, 0.03em 0 0 #0f0, 0 0 0 #00f; }
+            99% { text-shadow: 0.05em 0 0 #f00, -0.025em -0.04em 0 #0f0, -0.04em -0.025em 0 #00f; }
+            100% { text-shadow: 0.025em 0 0 #f00, -0.025em -0.025em 0 #0f0, -0.04em 0 0 #00f; }
+        }
+        /* Mobile line fix: throttle padding, enforce wrap/break for overflow mercy */
+        @media (max-width: 480px) {
+            .analysis-section {
+                max-width: 100%;
+                padding: 2rem 1rem;
+            }
+            p, ul, pre {
+                word-break: break-word;
+                hyphens: auto;
+            }
+            pre {
+                white-space: pre-wrap;
+                overflow-wrap: break-word;
+            }
+            h1, h2, h3 {
+                font-size: 1.5rem;
+                word-break: break-word;
+                hyphens: auto;
+                text-align: center;
+                padding: 0 1rem;
+            }
+        }
+    </style>
 </body>
 </html>
